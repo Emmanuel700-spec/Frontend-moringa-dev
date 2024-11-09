@@ -1,0 +1,72 @@
+
+
+.home {
+    background-color: #f4f4f4;
+    padding: 40px;
+    text-align: center;
+}
+
+.home-header {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.home-content h1 {
+    font-size: 2.5rem;
+}
+
+.browse-button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    width: 150px;
+    border: none;
+    cursor: pointer;
+}
+
+.browse-button:hover {
+    background-color: rgb(15, 0, 100);
+}
+
+.welcome-text {
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.extra-content {
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+.gallery {
+    margin-top: 40px;
+}
+
+.gallery h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.gallery-images {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.gallery-item {
+    text-align: center;
+}
+
+.gallery-img {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.gallery-description {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: darkpurple;
+    /* Use the updated color for description */
+}

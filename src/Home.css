@@ -1,0 +1,132 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9fafb; /* Light background color */
+    color: #333; /* Dark text color */
+  }
+  
+  /* Container for the Home page */
+  .home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full height of the viewport */
+    padding: 20px;
+  }
+  
+  /* Header styles */
+  .home-header {
+    background-color: #ffffff; /* White background for header */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 40px;
+    width: 100%;
+    max-width: 900px; /* Limit the width for larger screens */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+  
+  .welcome-text {
+    font-size: 1rem;
+    color: #555;
+    margin: 20px 0;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 700px;
+  }
+  
+  .browse-button {
+    background-color: #4a90e2; /* Primary button color */
+    color: white;
+    padding: 8px 20px; /* Compact padding to make the button fit the text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 1rem; /* Adjust font size */
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+    display: inline-block; /* Ensures button size adjusts to content */
+    width: auto; /* Button width should fit the text */
+    text-align: center; /* Center the text */
+  }
+  
+  .browse-button:hover {
+    background-color: #357abd; /* Darker blue on hover */
+  }
+  
+  
+  .extra-content {
+    margin-top: 30px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 700px;
+  }
+  
+  .extra-content h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .extra-content p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+    text-align: center;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .home-header {
+      padding: 30px;
+    }
+  
+    h1 {
+      font-size: 2rem;
+    }
+  
+    .welcome-text {
+      font-size: 0.9rem;
+      max-width: 90%;
+    }
+  
+    .browse-button {
+      padding: 10px 25px;
+      font-size: 1rem;
+    }
+  
+    .extra-content {
+      padding: 15px;
+    }
+  
+    .extra-content h3 {
+      font-size: 1.5rem;
+    }
+  }
+  

@@ -1,0 +1,29 @@
+
+/* src/Navbar.css */
+.navbar {
+    background-color: #a1b3c4;
+    /* Silver-blue background for Navbar */
+    padding: 1rem;
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-item {
+    color: black;
+    /* Black text for navbar items */
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    /* Make navbar text bold */
+}
+
+.navbar-item:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,35 @@
+
+
+.navbar {
+    background-color: #ffff;
+    padding: 10px 20px;
+    display: flex;
+   
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 50px;
+    /* Adjust logo size */
+    width: auto;
+    /* Ensure logo aspect ratio is maintained */
+}
+
+.navbar-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-item {
+    color: rgb(40, 39, 39);
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.navbar-item:hover {
+    color: #0ce245;
+}

@@ -1,0 +1,173 @@
+
+.header {
+  display: flex;
+  justify-content: space-between;  /* Distribute space between logo, navbar, and icons */
+  align-items: center;
+  background-color: #D2F7C6;  /* Greenish background color */
+  padding: 20px;
+  position: relative;  /* Allows positioning of icons/buttons */
+  color: white;
+  z-index: 0;  /* Ensure the header stays below the icons */
+}
+
+/* Logo Container */
+.logo-container {
+  flex: 1;
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
+  width: 120px;  /* Adjust the width as needed */
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  width: 100%;
+  position: relative;  /* This ensures that the icons will be positioned relative to the navbar */
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;  /* Increased space between navbar items */
+  margin-right: 100px;  /* Create space for icons on the right */
+}
+
+/* For DevOps link */
+.navbar li:nth-child(2) a {
+  background-color: #f0f0f0;  /* Light background */
+}
+
+.navbar li:nth-child(2) a:hover {
+  background-color: #e0e0e0;  /* Slightly darker on hover */
+}
+
+/* For Front-End link */
+.navbar li:nth-child(3) a {
+  background-color: #f0f0f0;
+}
+
+.navbar li:nth-child(3) a:hover {
+  background-color: #e0e0e0;
+}
+
+/* For Fullstack link */
+.navbar li:nth-child(4) a {
+  background-color: #f0f0f0;
+}
+
+.navbar li:nth-child(4) a:hover {
+  background-color: #e0e0e0;
+}
+
+/* For Backend link */
+.navbar li:nth-child(5) a {
+  background-color: #f0f0f0;
+}
+
+.navbar li:nth-child(5) a:hover {
+  background-color: #e0e0e0;
+}
+
+/* For Cloud Computing link */
+.navbar li:nth-child(6) a {
+  background-color: #f0f0f0;
+}
+
+.navbar li:nth-child(6) a:hover {
+  background-color: #e0e0e0;
+}
+
+/* Adjust the "For You" link position */
+.navbar li:first-child a {
+  margin-left: -120px;  /* Move the "For You" link closer to the logo */
+  padding-left: 10px;  /* Adjust padding to make it look better */
+}
+
+/* Navbar links */
+.navbar li a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 8px 16px;  /* Padding for better spacing */
+  border-radius: 5px;
+}
+
+.navbar li a:hover {
+  color: #ff6347;  /* Hover color for links */
+  background-color: #e0e0e0;
+}
+
+/* Icons Container (bell, bookmark, user icon) */
+.icons-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: absolute;
+  top: 10px;  /* Move icons slightly down if needed */
+  right: 20px;  /* Make sure it's placed correctly */
+  z-index: 20;  /* Ensure it's above other content in the header */
+}
+
+.bell-icon,
+.bookmark-icon,
+.user-icon {
+  font-size: 30px;
+  color: black;
+  cursor: pointer;
+  /* background-color: red;  */
+  z-index: 10;  /* Ensure the icon is on top of other elements */
+  position: relative;  /* Required for z-index to take effect */
+}
+
+/* Profile Button Styling */
+.create-profile-btn {
+  background-color: #4CAF50;  /* Green background */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  margin-top: 30px;  /* Space from navbar */
+  margin-left: auto;
+  margin-right: auto;  /* Center horizontally */
+}
+
+.create-profile-btn:hover {
+  background-color: #45a049;  /* Darker green on hover */
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  /* Navbar links */
+  .navbar {
+    display: none;  /* Hide navbar on small screens */
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar.active {
+    display: flex;  /* Show navbar when active (for mobile hamburger menu) */
+  }
+
+  /* Hamburger menu icon */
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .hamburger .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+  }
+}

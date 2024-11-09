@@ -1,0 +1,82 @@
+
+.usernav {
+    background-color: #D2F7C6;
+    color: black;
+    display: flex;
+    flex-direction: column;
+
+    /* align-items: center; */
+    padding: 10px 0px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width:100%;
+  }
+  
+  /* Layout of the navbar content */
+  .usernav-logo {
+    display: flex;
+    gap:70%;  
+    margin-bottom: 10px;
+
+    
+  }
+  
+  .userlogo img {
+    width: 3px;
+    height: 2px;
+    margin: 0;  
+
+  }
+  
+  .usernav-icons {
+    display: flex;
+    /* justify-content: flex-end; */
+    /* width: 75%; */
+    margin-bottom: 10px;
+    margin-left: 20px;
+  }
+  
+  .icon {
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+  }
+  
+  .icon:hover {
+    color: #f39c12; /* Hover effect for icons */
+  }
+  
+  /* Menu items */
+  .usernav-menu {
+    display: flex;
+    justify-content: space-between;
+    /* justify-content: space-evenly; */
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-right: 10px;
+    list-style: none;
+  }
+  /* .usernav-menu li:first-child {
+    margin-left: 0;
+    padding-left: 0;
+  } */
+  
+  /* .usernav-menu li {
+    margin: 0 0px;
+  } */
+  
+  .usernav-menu li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  .usernav-menu li a:hover {
+    color: #f39c12; /* Hover effect for links */
+  }
+  

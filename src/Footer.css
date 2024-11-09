@@ -1,0 +1,55 @@
+
+/* src/Footer.css */
+.footer {
+    background-color: #a1b3c4;
+    /* Silver-blue background for Footer */
+    color: black;
+    /* Bold black text */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-icons a {
+    color: black;
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+.social-icons a:hover {
+    color: #444;
+    /* Darker shade on hover */
+}
+
+/* Styling for the location text */
+.location p {
+    font-size: 1rem;
+    color: black;
+    text-align: right;
+    margin: 0;
+}
+
+/* Adjusting icon layout to make sure they are spaced properly */
+.social-icons {
+    display: flex;
+    align-items: center;
+}
+
+.social-icons a {
+    margin-right: 20px;
+    /* Add margin between icons */
+}
+
+.social-icons a:last-child {
+    margin-right: 0;
+    /* Remove right margin from the last icon */
+}

@@ -1,0 +1,45 @@
+
+.Sidenav {
+    position: fixed; /* Keeps the side nav fixed on the screen */
+    top: 80px; /* Adjust this based on the height of your top navigation */
+    left: 0;
+    width: 220px; /* Width of the side nav */
+    height: calc(100% - 80px); /* Full height minus the height of top nav */
+   
+    color: black;
+    padding-top: 20px;
+    padding-left: 20px;
+    z-index: 999; /* Ensure it's above other content */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* Optional shadow effect for a floating appearance */
+  }
+  
+  /* Header style (optional, based on your example) */
+  .Sidenav h1 {
+    color:black;
+    font-size: 24px;
+    margin-bottom: 20px; /* Space between the header and the menu items */
+    font-weight: bold;
+  }
+  
+  /* Style for the menu items */
+  .side-menu {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .side-menu li {
+    margin-bottom: 15px; /* Space between each menu item */
+  }
+  
+  .side-menu li a {
+    display: block;
+    text-decoration: none;
+    color: black; /* White text for links */
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 4px; /* Slightly rounded corners */
+    transition: background-color 0.3s ease; /* Smooth background color transition on hover */
+  }
+  
+ 

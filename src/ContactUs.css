@@ -1,0 +1,42 @@
+
+/* src/ContactUs.css */
+.contact-us {
+    background-color: #a1b3c4;
+    /* Silver-blue background for Contact Us page */
+    text-align: center;
+    padding: 40px;
+}
+
+.contact-us-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.contact-us-form input,
+.contact-us-form textarea {
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+.contact-us-form button {
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.contact-us-form button:hover {
+    background-color: darkgreen;
+}
+
+.success-message {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: black;
+}

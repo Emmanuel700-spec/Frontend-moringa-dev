@@ -1,0 +1,21 @@
+
+.profile {
+    background-color: #f9f9f9;
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+.profile h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.profile-info {
+    font-size: 1.1rem;
+}
+
+.profile-info p {
+    margin-bottom: 10px;
+}
