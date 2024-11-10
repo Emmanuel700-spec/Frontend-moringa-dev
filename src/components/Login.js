@@ -1,58 +1,98 @@
-import React, { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { login as loginService } from '../services/AuthService';
-import { useNavigate, Link } from 'react-router-dom';
-import './Login.css';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Login.css'; // Ensure this file exists
+import { Circles } from 'react-loader-spinner'; // Import a loading spinner
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const { login } = useAuth();
+  const [isLoading, setIsLoading] = useState(false); // For showing loading state
   const navigate = useNavigate();
+
+  // Check if user is already logged in (persisted from localStorage)
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const userName = localStorage.getItem('userName');
+    const role = localStorage.getItem('role');
+    
+    if (token && userName && role) {
+      // Redirect based on role if the user is already logged in
+      if (role === 'admin') {
+        navigate('/admin/dashboard');
+      } else if (role === 'tech_writer') {
+        navigate('/tech_writer/dashboard');
+      } else {
+        navigate('/dashboard');
+      }
+    }
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setIsLoading(true); // Start loading state
 
     try {
-      const response = await loginService({ email, password });
+      // Fetch users from the mock API
+      const response = await fetch('http://localhost:5000/users');
 
-      if (response.token) {
-        // Store the token
-        localStorage.setItem('token', response.token);
+      // Check if the response is valid
+      if (!response.ok) {
+        throw new Error('Failed to fetch users');
+      }
 
-        // Update the global auth state
-        login(response.token);
+      const users = await response.json();
 
-        // Log response for debugging
-        console.log("User type:", response.userType);
+      // Find the user that matches the email and password
+      const user = users.find((user) => user.email === email && user.password === password);
 
-        // Check user type and redirect accordingly
-        if (response.userType === 'Admin' || email.endsWith('@admin.moringaschool.com')) {
-          // Redirect to the specified admin dashboard URL
-          navigate('/admin/dashboard');
-        } else if (response.userType === 'Tech Writer') {
-          // Redirect to the Tech Writer homepage
-          navigate('/techwriter/home'); // Updated to use navigate instead of window.location.href
-        } else {
-          // Redirect to regular user dashboard
-          navigate('/');
-        }
+      if (user) {
+        // Simulate a token generation (normally you would generate a real token here)
+        const token = 'sample-jwt-token'; // Simulated token for now
 
-        alert('Login successful!');
+        // Store user details in localStorage
+        localStorage.setItem('token', token);
+        localStorage.setItem('role', user.role);
+        localStorage.setItem('userName', user.name); // Store user's name for the Navbar
+
+        // Introduce a delay of 4-5 seconds before navigating to the dashboard
+        setTimeout(() => {
+          // Clear form and redirect after the delay
+          setEmail('');  // Clear email
+          setPassword('');  // Clear password
+
+          // Redirect based on user role
+          if (user.role === 'admin') {
+            navigate('/admin/dashboard');
+          } else if (user.role === 'tech_writer') {
+            navigate('/tech_writer/dashboard');
+          } else {
+            navigate('/dashboard');
+          }
+        }, 4000); // 4 seconds delay
       } else {
-        throw new Error('Token missing from response');
+        throw new Error('Invalid email or password.');
       }
     } catch (error) {
-      setError(error.message || 'An unexpected error occurred');
+      // Handle different error cases
+      if (error.message === 'Failed to fetch users') {
+        setError('Unable to reach the server. Please try again later.');
+      } else {
+        setError(error.message || 'An unexpected error occurred.');
+      }
+    } finally {
+      setIsLoading(false); // End loading state
     }
   };
 
   return (
     <div className="login">
       <h1>Login</h1>
-      {error && <p className="error">{error}</p>}
+
+      {/* Display error message if there is any */}
+      {error && <p className="error" aria-live="assertive">{error}</p>}
+
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="email">Email</label>
@@ -66,6 +106,7 @@ const Login = () => {
             required
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
@@ -78,16 +119,19 @@ const Login = () => {
             required
           />
         </div>
-        <div className="forgot-password">
-          <Link to="/forgot-password">Forgot Password?</Link>
-        </div>
-        <button type="submit" className="login-btn">
-          Login
+
+        <button
+          type="submit"
+          className="login-btn"
+          disabled={isLoading} // Disable button while loading
+        >
+          {isLoading ? (
+            <Circles height="20" width="20" color="#4fa94d" ariaLabel="loading" />
+          ) : (
+            <span>Login</span>
+          )}
         </button>
       </form>
-      <div className="register-link">
-        <p>Don’t have an account? <Link to="/signup">Register</Link></p>
-      </div>
     </div>
   );
 };

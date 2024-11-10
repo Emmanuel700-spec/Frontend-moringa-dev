@@ -32,9 +32,9 @@ const Home = () => {
     },
   ];
 
-  // Function to navigate to the Sign Up page when the button is clicked
+  // Function to navigate to the Register page when the button is clicked
   const handleBrowseClick = () => {
-    navigate('/signup'); // Redirect to the Sign Up page
+    navigate('/register'); // Redirect to the Register page instead of signup
   };
 
   return (

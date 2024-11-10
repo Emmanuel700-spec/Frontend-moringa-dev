@@ -12,7 +12,6 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        
         {/* About Us Section */}
         <div className="footer-section about">
           <h3>About Us</h3>
@@ -73,7 +72,8 @@ const Footer = () => {
               height="300" 
               style={{ border: 0 }} 
               allowFullScreen="" 
-              loading="lazy"
+              loading="lazy" 
+              title="Map showing Moringa School location"
             ></iframe>
           </div>
         </div>

@@ -1,0 +1,118 @@
+{
+  "categories": [
+    {
+      "id": "86fb",
+      "name": "Cosmetics-shop-project-phase-2"
+    },
+    {
+      "id": "12f9",
+      "name": "Full stack"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2-GMaI8HQQBnUEmO84BhBTvRbpDWGcxKqZA&s",
+      "usertype": "user",
+      "active": false
+    },
+    {
+      "id": "f41e",
+      "name": "Emmanuel Kipkirui Ronoh",
+      "email": "eronoh036@techwriter.moringaschool.com",
+      "image": "https://example.com/path-to-profile-image.jpg",
+      "password": "1234",
+      "role": "user",
+      "active": true
+    },
+    {
+      "id": "2636",
+      "name": "Emmanuel Kipkirui Ronoh",
+      "email": "eronoh036@techwriter.moringaschool.com",
+      "image": "https://example.com/path-to-profile-image.jpg",
+      "password": "1234",
+      "role": "user",
+      "active": true
+    },
+    {
+      "id": "2027",
+      "name": "Emmanuel Kipkirui Ronoh",
+      "email": "amos@gmail.com",
+      "image": "https://example.com/path-to-profile-image.jpg",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "role": "user",
+      "active": true
+    },
+    {
+      "id": "2c6c",
+      "name": "Emmanuel Kipkirui Ronoh",
+      "email": "eronoh036@admin.moringaschool.com",
+      "image": "https://example.com/path-to-profile-image.jpg",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "role": "admin",
+      "active": true
+    },
+    {
+      "id": "4954",
+      "name": "Emmanuel Kipkirui",
+      "email": "eronoh036@gmail.com",
+      "image": "https://example.com/path-to-profile-image.jpg",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "role": "user",
+      "active": true
+    },
+    {
+      "id": "1baa",
+      "name": "Emmanuel Kipkirui Ronoh",
+      "email": "eronoh036@admin.moringaschool.com",
+      "image": "https://example.com/path-to-profile-image.jpg",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "role": "admin",
+      "active": true
+    }
+  ],
+  "content": [
+    {
+      "id": 1,
+      "title": "Tech Talk: AI in 2024",
+      "description": "This is a video about AI advancements in 2024, presented by industry experts.",
+      "type": "video",
+      "status": "Pending",
+      "flagged": false,
+      "mediaUrl": "https://youtu.be/ysWTSZj5a0E?si=bsfCeKesx5v0xzcN"
+    },
+    {
+      "id": 2,
+      "title": "Understanding Fullstack Development",
+      "description": "An insightful article discussing full-stack development.",
+      "type": "text",
+      "status": "Pending",
+      "flagged": false,
+      "mediaUrl": ""
+    },
+    {
+      "id": 3,
+      "title": "Podcast on DevOps",
+      "description": "Listen to this podcast discussing the future of DevOps.",
+      "type": "audio",
+      "status": "Pending",
+      "flagged": false,
+      "mediaUrl": "https://www.example.com/podcast.mp3"
+    },
+    {
+      "id": 4,
+      "title": "Image from Moringa School Event",
+      "description": "A photo taken during the Moringa School graduation event.",
+      "type": "image",
+      "status": "Pending",
+      "flagged": false,
+      "mediaUrl": "https://www.example.com/photo.jpg"
+    }
+  ]
+}

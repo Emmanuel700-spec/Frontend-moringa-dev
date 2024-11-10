@@ -36,3 +36,90 @@
     transform: rotate(360deg);
   }
 }
+
+/* Ensure the page content takes full height */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content area should grow to fill available space */
+.main-content {
+  flex: 1;
+}
+
+/* Footer styling */
+footer {
+  flex-shrink: 0; /* Prevent footer from shrinking */
+}
+
+/* Add this to the parent container of your content and footer */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the page takes at least the full height of the screen */
+}
+
+/* Main content section that takes available space */
+.page-content {
+  flex-grow: 1; /* This ensures the content expands to take all available space */
+  padding: 20px; /* Maintain padding around content */
+  margin-left: 0; /* Ensure no extra space when sidebar is collapsed */
+}
+
+/* Make sure to update the sidebar's styles to handle collapsing properly */
+.sidebar {
+  transition: margin 0.3s ease; /* Smooth transition when sidebar collapses */
+}
+
+.sidebar.collapsed {
+  margin-left: -250px; /* Adjust the margin when collapsed */
+}
+
+/* Global styles to make sure the page is full height and footer is at the bottom */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content {
+  flex-grow: 1;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    padding: 15px; /* Reduced padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-credit {
+    font-size: 0.8rem; /* Smaller font size for smaller screens */
+  }
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content {
+  flex-grow: 1;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    padding: 15px;
+  }
+}

@@ -1,35 +1,187 @@
-
-
+/* Navbar Container */
 .navbar {
-    background-color: #ffff;
+    background-color: #ffffff; /* White background */
     padding: 10px 20px;
     display: flex;
-   
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+    position: sticky;
+    top: 0;
+    z-index: 100; /* Keeps navbar always on top */
+    height: 80px;
 }
 
+/* Logo Container */
 .logo-container img {
-    height: 50px;
-    /* Adjust logo size */
-    width: auto;
-    /* Ensure logo aspect ratio is maintained */
+    height: 50px; /* Adjust logo height */
+    width: auto;  /* Maintain logo aspect ratio */
 }
 
+/* Navbar Links */
 .navbar-links {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
+    align-items: center;
 }
 
+/* Navbar Item */
 .navbar-item {
-    color: rgb(40, 39, 39);
-    margin-left: 20px;
+    color: rgb(40, 39, 39); /* Default text color */
+    margin-left: 20px; /* Spacing between navbar items */
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Adjust font size */
+    transition: color 0.3s ease; /* Smooth color transition */
+    font-weight: 500;
 }
 
+/* Hover Effect for Navbar Items */
 .navbar-item:hover {
-    color: #0ce245;
+    color: #0ce245; /* Highlight color on hover */
+    text-decoration: underline; /* Underline effect on hover */
+}
+
+/* Logged In Navbar (when user is logged in) */
+.navbar-logged-in {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align items to the right for better positioning */
+    gap: 20px; /* Space between profile and logout button */
+}
+
+/* Welcome Message */
+.welcome-message {
+    font-weight: 600;
+    color: rgb(40, 39, 39);
+    font-size: 1rem;
+    margin-right: 15px; /* Space between welcome message and profile */
+}
+
+/* Profile Avatar */
+.navbar-logged-in .MuiAvatar-root {
+    background-color: #f1f1f1;
+    color: #007bff;
+    font-weight: 600;
+    width: 40px;
+    height: 40px;
+    display: flex; /* Ensures the avatar stays in a row with the logout button */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Cursor pointer on avatar */
+    transition: transform 0.3s ease; /* Smooth transition for avatar hover effect */
+}
+
+/* Profile Avatar Hover Effect */
+.navbar-logged-in .MuiAvatar-root:hover {
+    transform: scale(1.1); /* Avatar scales up slightly on hover */
+}
+
+/* Profile and Logout Button Styles */
+.navbar-logged-in .logout-btn {
+    background-color: #f44336; /* Red color for logout */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px; /* Space between avatar and logout button */
+    display: flex; /* Ensure button aligns horizontally */
+    align-items: end;
+    justify-content: center;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover Effect for Logout Button */
+.navbar-logged-in .logout-btn:hover {
+    background-color: #d32f2f; /* Darker red for hover effect */
+}
+
+/* Profile Dropdown (Popover) Styling */
+.profile-popover {
+    padding: 20px;
+    width: 300px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    position: relative;
+}
+
+/* Profile Popover Header (Profile picture and user details) */
+.profile-popover .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-popover .profile-header h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 10px;
+    color: rgb(40, 39, 39);
+}
+
+.profile-popover .profile-header p {
+    font-size: 1rem;
+    color: #757575;
+}
+
+/* Profile Form Inputs */
+.profile-popover .MuiTextField-root {
+    margin-bottom: 20px;
+    width: 100%; /* Full width inputs */
+}
+
+/* Profile Picture Upload Button */
+.profile-popover .MuiButton-root {
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #0ce245;
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* Save Changes Button */
+.profile-popover .MuiButton-root.save-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+/* Save Changes Button Hover */
+.profile-popover .MuiButton-root.save-btn:hover {
+    background-color: #388e3c;
+}
+
+/* Mobile Navbar Styling */
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none; /* Hide links on small screens */
+    }
+
+    .navbar-logged-in {
+        gap: 10px; /* Smaller gap between profile and logout button */
+        justify-content: flex-start; /* Align items to the left for mobile */
+    }
+
+    .navbar-item {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+        margin-left: 15px; /* Reduce margin for smaller screens */
+    }
+
+    .logo-container img {
+        height: 40px; /* Adjust logo size for smaller screens */
+    }
+
+    .navbar-logged-in .logout-btn {
+        font-size: 14px; /* Smaller button text on mobile */
+        padding: 6px 12px; /* Smaller padding for logout button */
+    }
+
+    .navbar-logged-in .MuiAvatar-root {
+        width: 35px;
+        height: 35px;
+    }
 }
