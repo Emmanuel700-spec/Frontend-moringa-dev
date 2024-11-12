@@ -1,137 +1,126 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; // Ensure this file exists
-import { Circles } from 'react-loader-spinner'; // Import a loading spinner
+import './Login.css';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false); // For showing loading state
+  const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
-
-  // Check if user is already logged in (persisted from localStorage)
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    const userName = localStorage.getItem('userName');
-    const role = localStorage.getItem('role');
-    
-    if (token && userName && role) {
-      // Redirect based on role if the user is already logged in
-      if (role === 'admin') {
-        navigate('/admin/dashboard');
-      } else if (role === 'tech_writer') {
-        navigate('/tech_writer/dashboard');
-      } else {
-        navigate('/dashboard');
-      }
-    }
-  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    setIsLoading(true); // Start loading state
+    setErrorMessage('');
+
+    if (!email || !password) {
+      setErrorMessage('Please fill in both email and password fields.');
+      return;
+    }
 
     try {
-      // Fetch users from the mock API
-      const response = await fetch('http://localhost:5000/users');
-
-      // Check if the response is valid
+      const response = await fetch('http://localhost:3001/users');
       if (!response.ok) {
-        throw new Error('Failed to fetch users');
+        throw new Error('Network response was not ok');
       }
 
       const users = await response.json();
+      console.log("Fetched users:", users);
 
-      // Find the user that matches the email and password
       const user = users.find((user) => user.email === email && user.password === password);
 
       if (user) {
-        // Simulate a token generation (normally you would generate a real token here)
-        const token = 'sample-jwt-token'; // Simulated token for now
-
-        // Store user details in localStorage
-        localStorage.setItem('token', token);
+        console.log("User found:", user);
+        localStorage.setItem('token', 'user-token');
         localStorage.setItem('role', user.role);
-        localStorage.setItem('userName', user.name); // Store user's name for the Navbar
 
-        // Introduce a delay of 4-5 seconds before navigating to the dashboard
-        setTimeout(() => {
-          // Clear form and redirect after the delay
-          setEmail('');  // Clear email
-          setPassword('');  // Clear password
+        // Extract domain part of email for comparison
+        const emailDomain = email.split('@')[1]?.trim().toLowerCase();
+        const userRole = user.role.toLowerCase();
 
-          // Redirect based on user role
-          if (user.role === 'admin') {
-            navigate('/admin/dashboard');
-          } else if (user.role === 'tech_writer') {
-            navigate('/tech_writer/dashboard');
-          } else {
-            navigate('/dashboard');
+        // Define acceptable domains for roles
+        const roleDomains = {
+          admin: 'admin.moringaschool.com',
+          techwriter: 'techwriter.moringaschool.com',
+          user: 'gmail.com'
+        };
+
+        console.log("Extracted Domain:", emailDomain);
+        console.log("User Role:", userRole);
+
+        // Validate domain based on role
+        if (roleDomains[userRole] === emailDomain) {
+          switch (userRole) {
+            case 'admin':
+              navigate('/admin/dashboard');
+              break;
+            case 'techwriter':
+              navigate('/techwriter/TechWriterHomePage');
+              break;
+            case 'user':
+              navigate('/user/UserDashboard');
+              break;
+            default:
+              setErrorMessage('Invalid role. Please try again.');
           }
-        }, 4000); // 4 seconds delay
+        } else {
+          setErrorMessage('Invalid email domain for the specified role. Please check and try again.');
+        }
       } else {
-        throw new Error('Invalid email or password.');
+        setErrorMessage('Invalid credentials. Please try again.');
       }
     } catch (error) {
-      // Handle different error cases
-      if (error.message === 'Failed to fetch users') {
-        setError('Unable to reach the server. Please try again later.');
-      } else {
-        setError(error.message || 'An unexpected error occurred.');
-      }
-    } finally {
-      setIsLoading(false); // End loading state
+      setErrorMessage('An error occurred while logging in. Please try again later.');
+      console.error('Error during login:', error);
     }
   };
 
   return (
-    <div className="login">
-      <h1>Login</h1>
-
-      {/* Display error message if there is any */}
-      {error && <p className="error" aria-live="assertive">{error}</p>}
-
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+    <div className="login-page">
+      <div className="login-container">
+        <h2>Login</h2>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="input-group">
+            <label htmlFor="email">Email:</label>
+            <input 
+              type="email" 
+              id="email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required 
+              className="input-field"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="password">Password:</label>
+            <div className="password-container">
+              <input 
+                type={showPassword ? "text" : "password"}
+                id="password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                required 
+                className="input-field"
+                placeholder="Enter your password"
+              />
+              <span 
+                className="eye-icon" 
+                onClick={() => setShowPassword(!showPassword)} 
+                style={{ cursor: 'pointer' }}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
+          </div>
+          <button type="submit" className="login-button">Login</button>
+        </form>
+        <div className="signup-link">
+          <p>Don't have an account? <a href="/register" className="signup-link-text">Sign up</a></p>
         </div>
-
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="login-btn"
-          disabled={isLoading} // Disable button while loading
-        >
-          {isLoading ? (
-            <Circles height="20" width="20" color="#4fa94d" ariaLabel="loading" />
-          ) : (
-            <span>Login</span>
-          )}
-        </button>
-      </form>
+      </div>
     </div>
   );
 };

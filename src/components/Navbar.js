@@ -20,6 +20,7 @@ const Navbar = () => {
     const userName = localStorage.getItem('userName');
     const role = localStorage.getItem('role');
     const profilePic = localStorage.getItem('profilePic');
+    const email = localStorage.getItem('email');
 
     if (token && userName && role) {
       setIsLoggedIn(true);
@@ -27,7 +28,8 @@ const Navbar = () => {
       setRole(role);
       setProfilePic(profilePic); // Load profile picture
       setNewName(userName); // Set the current user name in the form field
-      setNewEmail(localStorage.getItem('email') || ''); // Set the current email
+      setNewEmail(email || ''); // Set the current email
+      console.log("User is logged in:", userName);
     } else {
       setIsLoggedIn(false);
       setUserName('');
@@ -35,32 +37,27 @@ const Navbar = () => {
       setProfilePic(null);
       setNewName('');
       setNewEmail('');
+      console.log("User is not logged in");
     }
   };
 
   // Check login status on component mount and whenever localStorage changes
   useEffect(() => {
     checkLoginStatus();
-  }, []); // Empty dependency array to run only on mount
+  }, []);
 
   // Handle login - set state when logging in
   const handleLogin = (userName, role) => {
     localStorage.setItem('token', 'sample-jwt-token');
     localStorage.setItem('role', role);
     localStorage.setItem('userName', userName);
-
     checkLoginStatus();
     navigate('/dashboard');
   };
 
   // Handle logout - clear state and redirect
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    localStorage.removeItem('userName');
-    localStorage.removeItem('profilePic');
-    localStorage.removeItem('email');
-
+    localStorage.clear(); // Clear all local storage items for simplicity
     checkLoginStatus();
     navigate('/login');
   };
